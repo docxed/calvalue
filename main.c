@@ -11,7 +11,7 @@ void compare(){
     scanf("%d", &amount);
 
     //size and price input
-    printf("\nEnter size (gram/kilo/liter/...) and price (bath)\n\n");
+    printf("\nEnter size (gram/kilo/liter/...) and price (baht)\n\n");
     float products[amount], price[amount], result[amount];
     for(int i=0; i<amount; ++i){
         printf("%d. Size: ", i+1);
@@ -22,12 +22,33 @@ void compare(){
         result[i] = products[i]/price[i];
     }
 
-    //find maximum
+    //find maximum of result
+    float maxs = result[0];
+    for(int i=1; i<amount; ++i){
+        if(result[i] > maxs){
+            maxs = result[i];
+        }
+    }
 
+    //check found
+    int amount_of_result=0;
+    for(int i=0; i<amount; ++i){
+        if(maxs == result[i]){
+            ++amount_of_result;
+        }
+    }
 
     //output
-    for (int i=0; i<amount; ++i){
-        printf("%.2f\n", result[i]);
+    if(amount_of_result == amount){
+        printf("All items are of equal value.\n");
+    }else if(amount == 1){
+        for(int i=0; i<amount; ++i){
+            if(maxs == result[i]){
+                printf("Type %d (size %.2f) has the most value.", i+1, products[i]);
+
+                break;
+            }
+        }
     }
 
     return;
