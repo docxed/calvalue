@@ -165,7 +165,7 @@ void promotion(){
                 break;
             }
         }
-    }else if(count_mins > 1 && count_mins != amount){
+    }else if(count_mins > 1 && count_mins != amount){ // case promotion is the most value but not equal at all.
         for(int i=0; i<amount; ++i){
             if(mins == price_per_values[i]){
                 times_use_promotion = want/(buy[i]+get[i]); //times of using promotion.
@@ -174,7 +174,7 @@ void promotion(){
                 printf("Type %d (buy %d get %d) has the best promotion that you have to pay %.2f baht\n", i+1, buy[i], get[i], pay);
             }
         }
-    }else{
+    }else{ //case all equal but need to calculate amount of pieces.
 
         //find total by items.
         int total[amount];
