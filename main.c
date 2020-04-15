@@ -33,7 +33,7 @@ void compare(){
     printf("Amount of products: ");
     scanf("%d", &amount);
 
-    //size and price input
+    //input size and price
     printf("\nEnter size (gram/kilo/liter/...) and price (baht)\n\n");
     float products[amount], price[amount], result[amount];
     for(int i=0; i<amount; ++i){
@@ -95,6 +95,47 @@ void compare(){
 
     //homepage
     home(1);
+    return;
+}
+
+void promotion(){
+    printf("\nCALVALUE\n\n");
+
+    //input section
+    int amount;
+    printf("Amount of promotion: ");
+    scanf("%d", &amount);
+
+    //input buy and get
+    printf("\nEnter buy, get and prcie.\n\n");
+    int buy[amount], get[amount];
+    float price[amount], price_per_values[amount];
+    for(int i=0; i<amount; ++i){
+        printf("%d. Buy: ", i+1);
+        scanf("%d", &buy[i]);
+        printf("   Get: ");
+        scanf("%d", &get[i]);
+        printf("   Price: ");
+        scanf("%f", &price[i]);
+    }
+
+    //input amount that you want
+    printf("\nEnter amount that you want:\n");
+    int want;
+    scanf("%d", &want);
+
+    //process to find price per item
+    float times_use_promotion, remainder, pay;
+    for(int i=0; i<amount; ++i){
+
+        times_use_promotion = want/(buy[i]+get[i]); //times of using promotion
+        remainder = want-(times_use_promotion)*(buy[i]+get[i]); //remainder of using promotion
+        pay = (times_use_promotion*buy[i]*price[i])+(remainder*price[i]); //price to pay by promoted
+        price_per_values[i] = pay/want; //price per item
+        printf("%.2f\n", price_per_values[i]);
+
+    }
+
 
     return;
 }
@@ -104,6 +145,7 @@ int main()
     int menu;
     printf("\nCALVALUE\n\n");
     printf("1. Compare the value of the product.\n");
+    printf("2. Compare promotion.\n");
     printf("0. Exit\n");
     printf("Enter number to continue\n");
     choose_menu:
@@ -113,6 +155,9 @@ int main()
     }else if(menu == 1){ // compare function
         system("cls");
         compare();
+    }else if(menu == 2){ // compare function
+        system("cls");
+        promotion();
     }else{ // retry input
         printf("Please enter the correct number.\n");
         goto choose_menu;
