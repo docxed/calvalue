@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1586861328 source:c:\users\currentjay\downloads\calvalue\main.c
+1586939768 source:c:\users\currentjay\downloads\calvalue\main.c
 	<stdio.h>
 	<stdlib.h>
+	<math.h>
 
