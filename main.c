@@ -16,6 +16,8 @@ void home(int direct){
             compare();
         }else if(direct == 2){
             promotion();
+        }else if(direct == 3){
+            discount();
         }
     }else if(menu == 2){
         system("cls");
@@ -100,6 +102,16 @@ void compare(){
     return;
 }
 
+float is_pay(int want, int buy, int get, float price){
+    //function is return pay of calculate promotion.
+    int times_use_promotion, remainder;
+    float pay;
+    times_use_promotion = want/(buy+get); //times of using promotion.
+    remainder = want-(times_use_promotion)*(buy+get); //remainder of using promotion.
+    pay = (times_use_promotion*buy*price)+(remainder*price); //price to pay by promoted.
+    return pay;
+}
+
 void promotion(){
     printf("\nCALVALUE\n\n");
 
@@ -131,9 +143,7 @@ void promotion(){
     int times_use_promotion, remainder;
     float pay;
     for(int i=0; i<amount; ++i){
-        times_use_promotion = want/(buy[i]+get[i]); //times of using promotion.
-        remainder = want-(times_use_promotion)*(buy[i]+get[i]); //remainder of using promotion.
-        pay = (times_use_promotion*buy[i]*price[i])+(remainder*price[i]); //price to pay by promoted.
+        pay = is_pay(want, buy[i], get[i], price[i]);
         price_per_values[i] = pay/want; //price per item.
     }
 
@@ -158,9 +168,7 @@ void promotion(){
     if(count_mins == 1){ //case 1 promotion is the most value.
         for(int i=0; i<amount; ++i){
             if(mins == price_per_values[i]){
-                times_use_promotion = want/(buy[i]+get[i]); //times of using promotion.
-                remainder = want-(times_use_promotion)*(buy[i]+get[i]); //remainder of using promotion.
-                pay = (times_use_promotion*buy[i]*price[i])+(remainder*price[i]); //price to pay by promoted.
+                pay = is_pay(want, buy[i], get[i], price[i]);
                 printf("Type %d (buy %d get %d) has the most promotion that you have to pay %.2f baht\n", i+1, buy[i], get[i], pay);
                 break;
             }
@@ -168,9 +176,7 @@ void promotion(){
     }else if(count_mins > 1 && count_mins != amount){ // case promotion is the most value but not equal at all.
         for(int i=0; i<amount; ++i){
             if(mins == price_per_values[i]){
-                times_use_promotion = want/(buy[i]+get[i]); //times of using promotion.
-                remainder = want-(times_use_promotion)*(buy[i]+get[i]); //remainder of using promotion.
-                pay = (times_use_promotion*buy[i]*price[i])+(remainder*price[i]); //price to pay by promoted.
+                pay = is_pay(want, buy[i], get[i], price[i]);
                 printf("Type %d (buy %d get %d) has the best promotion that you have to pay %.2f baht\n", i+1, buy[i], get[i], pay);
             }
         }
@@ -210,9 +216,7 @@ void promotion(){
         }else if(count_maxs_total == 1){ //case 1 is best promotion.
             for(int i=0; i<amount; ++i){
                 if(maxs_total == total[i]){
-                    times_use_promotion = want/(buy[i]+get[i]); //times of using promotion.
-                    remainder = want-(times_use_promotion)*(buy[i]+get[i]); //remainder of using promotion.
-                    pay = (times_use_promotion*buy[i]*price[i])+(remainder*price[i]); //price to pay by promoted.
+                    pay = is_pay(want, buy[i], get[i], price[i]);
                     printf("Type %d (buy %d get %d) has the most promotion that you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
                     break;
                 }
@@ -222,18 +226,14 @@ void promotion(){
             printf("\nWe suggest others for further decisions.\n");
             for (int i=0; i<amount; ++i){
                 if(maxs_total != total[i]){
-                    times_use_promotion = want/(buy[i]+get[i]); //times of using promotion.
-                    remainder = want-(times_use_promotion)*(buy[i]+get[i]); //remainder of using promotion.
-                    pay = (times_use_promotion*buy[i]*price[i])+(remainder*price[i]); //price to pay by promoted.
+                    pay = is_pay(want, buy[i], get[i], price[i]);
                     printf("Type %d (buy %d get %d) that you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
                 }
             }
         }else{ //case best promotion that more than 1.
             for(int i=0; i<amount; ++i){
                 if(maxs_total == total[i]){
-                    times_use_promotion = want/(buy[i]+get[i]); //times of using promotion.
-                    remainder = want-(times_use_promotion)*(buy[i]+get[i]); //remainder of using promotion.
-                    pay = (times_use_promotion*buy[i]*price[i])+(remainder*price[i]); //price to pay by promoted.
+                    pay = is_pay(want, buy[i], get[i], price[i]);
                     printf("Type %d (buy %d get %d) has the best promotion that you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
                 }
             }
@@ -242,9 +242,7 @@ void promotion(){
             printf("\nWe suggest others for further decisions.\n");
             for (int i=0; i<amount; ++i){
                 if(maxs_total != total[i]){
-                    times_use_promotion = want/(buy[i]+get[i]); //times of using promotion.
-                    remainder = want-(times_use_promotion)*(buy[i]+get[i]); //remainder of using promotion.
-                    pay = (times_use_promotion*buy[i]*price[i])+(remainder*price[i]); //price to pay by promoted.
+                    pay = is_pay(want, buy[i], get[i], price[i]);
                     printf("Type %d (buy %d get %d) that you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
                 }
             }
@@ -256,12 +254,49 @@ void promotion(){
     return;
 }
 
+void discount(){
+    printf("\nCALVALUE\n\n");
+    printf("Choose the best value for discount based on price or percentage.\n\n");
+
+    //input section
+    float percent, minimum, value, price;
+    printf("Type 1 Enter discount percentage: ");
+    scanf("%f", &percent);
+    printf("Enter the minimum purchase of discount percentage: ");
+    scanf("%f", &minimum);
+    printf("Type 2 Enter the amount of the discount value: ");
+    scanf("%f", &value);
+    printf("\nEnter Product price: \n");
+    scanf("%f", &price);
+
+    //process
+    float type_1=price, type_2=price;
+    if(price >= minimum){ //discount by percent.
+        type_1 -= price/100*percent;
+    }
+    type_2 -= value; //discount by value.
+
+    //output
+    if(type_1 == type_2){ //case equal.
+        printf("\nBoth types of discounts are worth the same.\n");
+    }else if(type_1 < type_2){ //case type 1 are best discounted.
+        printf("\nType 1 (discount percentage) are best value and reduce the product to %.2f baht.\n", type_1);
+    }else{ //case type 2 are best discounted.
+        printf("\nType 2 (discount value) are best value and reduce the product to %.2f baht.\n", type_2);
+    }
+
+    //home
+    home(3);
+    return;
+}
+
 int main()
 {
     int menu;
     printf("\nCALVALUE\n\n");
     printf("1. Compare the value of the product.\n");
     printf("2. Compare promotion.\n");
+    printf("3. Compare discount.\n");
     printf("0. Exit\n");
     printf("Enter number to continue\n");
     choose_menu:
@@ -274,6 +309,9 @@ int main()
     }else if(menu == 2){ // compare function
         system("cls");
         promotion();
+    }else if(menu == 3){
+        system("cls");
+        discount();
     }else{ // retry input
         printf("Please enter the correct number.\n");
         goto choose_menu;
