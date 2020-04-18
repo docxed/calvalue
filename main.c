@@ -118,7 +118,14 @@ void promotion(){
     //input section
     int amount;
     printf("Amount of promotion: ");
+    amount_input:
     scanf("%d", &amount);
+
+    //fix input
+    if(amount < 2){
+        printf("Please enter the correct amount or more than 1.\n");
+        goto amount_input;
+    }
 
     //input buy, get and price
     printf("\nEnter buy, get and price.\n\n");
@@ -261,8 +268,15 @@ void discount(){
     //input section
     float percent, minimum, value, price;
     printf("Type 1 Enter discount percentage: ");
+    percent_input:
     scanf("%f", &percent);
-    printf("Enter the minimum purchase of discount percentage: ");
+
+    //percent fix
+    if(percent > 100){
+        printf("Please enter the correct percent or less than equal 100.\n");
+        goto percent_input;
+    }
+    printf("Enter the maximum purchase of discount percentage: ");
     scanf("%f", &minimum);
     printf("Type 2 Enter the amount of the discount value: ");
     scanf("%f", &value);
