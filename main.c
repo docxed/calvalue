@@ -317,13 +317,13 @@ int main()
     scanf("%d", &menu);
     if(menu == 0){ // exit
         exit(0);
-    }else if(menu == 1){ // compare function
+    }else if(menu == 1){ // compare size
         system("cls");
         compare();
-    }else if(menu == 2){ // compare function
+    }else if(menu == 2){ // compare promotion
         system("cls");
         promotion();
-    }else if(menu == 3){
+    }else if(menu == 3){ // compare discount
         system("cls");
         discount();
     }else{ // retry input
