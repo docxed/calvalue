@@ -276,7 +276,7 @@ void discount(){
         printf("Please enter the correct percent or less than equal 100.\n");
         goto percent_input;
     }
-    printf("Enter the maximum purchase of discount percentage: ");
+    printf("Enter the maximum purchase of discount percentage, If there are no discount restrictions please enter 0: ");
     scanf("%f", &minimum);
     printf("Type 2 Enter the amount of the discount value: ");
     scanf("%f", &value);
@@ -284,9 +284,16 @@ void discount(){
     scanf("%f", &price);
 
     //process
-    float type_1=price, type_2=price;
+    float type_1=price, type_2=price, discount_by_percent;
     if(price >= minimum){ //discount by percent.
-        type_1 -= price/100*percent;
+        discount_by_percent = price/100*percent;
+        if(minimum == 0){
+            type_1 -= discount_by_percent;
+        }else if(discount_by_percent <= minimum){
+            type_1 -= discount_by_percent;
+        }else{
+            type_1 -= minimum;
+        }
     }
     type_2 -= value; //discount by value.
 
