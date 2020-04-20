@@ -30,7 +30,7 @@ void home(int direct){
 
 void compare(){
     printf("\nCALVALUE\n\n");
-    printf("Compare the worthiness of products in different sizes, for example having to buy the same detergent pack When buying large packages, is it worth more than small packages?\n\n");
+    printf("Compare the worthiness of the  same products in different sizes, for example: when you have to buy the same detergent type, but you want to buy large packages, is it worth more than small packages?\n\n");
 
     //input section
     int amount;
@@ -67,11 +67,11 @@ void compare(){
 
     //output 3 cases
     if(amount_of_result == amount){ //case all items are equal.
-        printf("\nAll items are of equal value.\n");
+        printf("\nAll products are of equal value.\n");
     }else if(amount_of_result == 1){ //case 1 item is the most value.
         for(int i=0; i<amount; ++i){
             if(maxs == result[i]){
-                printf("\nType %d (size %.2f) has the most value (gram/kilo/liter/...) per %.2f baht\n", i+1, products[i], result[i]);
+                printf("\nType: %d is the worthiest product (size: %.2f gram/kilo/liter/...) per %.2f baht\n", i+1, products[i], result[i]);
                 break;
             }
         }
@@ -80,7 +80,7 @@ void compare(){
         for(int i=0; i<amount; ++i){
             if(maxs == result[i])
             {
-                printf("Type %d (size %.2f) (gram/kilo/liter/...) per %.2f baht.\n", i+1, products[i], result[i]);
+                printf("Type: %d (size: %.2f gram/kilo/liter/...) per %.2f baht.\n", i+1, products[i], result[i]);
             }
         }
     }
@@ -92,7 +92,7 @@ void compare(){
         for(int i=0; i<amount; ++i){
             if(maxs != result[i]){
                 percent = fabs((maxs-result[i])/result[i]*100);
-                printf("More value than type %d (size %.2f) %.2f%%\n", i+1, products[i], percent);
+                printf("More value than type: %d (size: %.2f) %.2f%%\n", i+1, products[i], percent);
             }
         }
     }
@@ -114,21 +114,22 @@ float is_pay(int want, int buy, int get, float price){
 
 void promotion(){
     printf("\nCALVALUE\n\n");
+    printf("Choose the worthiest or the worth promotion.\n");
 
     //input section
     int amount;
-    printf("Amount of promotion: ");
+    printf("Number of promotion: ");
     amount_input:
     scanf("%d", &amount);
 
     //fix input
     if(amount < 2){
-        printf("Please enter the correct amount or more than 1.\n");
+        printf("Please enter the correct number or more than 1 promotion.\n");
         goto amount_input;
     }
 
     //input buy, get and price
-    printf("\nEnter buy, get and price.\n\n");
+    printf("\nEnter Buy, Get and Price.\n\n");
     int buy[amount], get[amount];
     float price[amount], price_per_values[amount];
     for(int i=0; i<amount; ++i){
@@ -141,7 +142,7 @@ void promotion(){
     }
 
     //input amount that you want.
-    printf("\nEnter amount that you want:\n");
+    printf("\nEnter amount of product that you want to buy:\n");
     int want;
     scanf("%d", &want);
     printf("\n");
@@ -176,7 +177,7 @@ void promotion(){
         for(int i=0; i<amount; ++i){
             if(mins == price_per_values[i]){
                 pay = is_pay(want, buy[i], get[i], price[i]);
-                printf("Type %d (buy %d get %d) has the most promotion that you have to pay %.2f baht\n", i+1, buy[i], get[i], pay);
+                printf("Type: %d (buy %d get %d) is the worthiest promotion.So you have to pay %.2f baht\n", i+1, buy[i], get[i], pay);
                 break;
             }
         }
@@ -184,7 +185,7 @@ void promotion(){
         for(int i=0; i<amount; ++i){
             if(mins == price_per_values[i]){
                 pay = is_pay(want, buy[i], get[i], price[i]);
-                printf("Type %d (buy %d get %d) has the best promotion that you have to pay %.2f baht\n", i+1, buy[i], get[i], pay);
+                printf("Type: %d (buy %d get %d) is the worthiest promotion.So you have to pay %.2f baht\n", i+1, buy[i], get[i], pay);
             }
         }
     }else{ //case all equal but need to calculate amount of pieces.
@@ -224,33 +225,33 @@ void promotion(){
             for(int i=0; i<amount; ++i){
                 if(maxs_total == total[i]){
                     pay = is_pay(want, buy[i], get[i], price[i]);
-                    printf("Type %d (buy %d get %d) has the most promotion that you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
+                    printf("Type: %d (buy %d get %d) is the worthiest promotion.So you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
                     break;
                 }
             }
 
             //suggest more promotion.
-            printf("\nWe suggest others for further decisions.\n");
+            printf("\nWe suggest others promotion for further decisions.\n");
             for (int i=0; i<amount; ++i){
                 if(maxs_total != total[i]){
                     pay = is_pay(want, buy[i], get[i], price[i]);
-                    printf("Type %d (buy %d get %d) that you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
+                    printf("Type: %d (buy %d get %d) is the worthiest promotion.So you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
                 }
             }
         }else{ //case best promotion that more than 1.
             for(int i=0; i<amount; ++i){
                 if(maxs_total == total[i]){
                     pay = is_pay(want, buy[i], get[i], price[i]);
-                    printf("Type %d (buy %d get %d) has the best promotion that you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
+                    printf("Type: %d (buy %d get %d) is the worthiest promotion.So you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
                 }
             }
 
             //suggest more promotion.
-            printf("\nWe suggest others for further decisions.\n");
+            printf("\nWe suggest others promotion for further decisions.\n");
             for (int i=0; i<amount; ++i){
                 if(maxs_total != total[i]){
                     pay = is_pay(want, buy[i], get[i], price[i]);
-                    printf("Type %d (buy %d get %d) that you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
+                    printf("Type: %d (buy %d get %d) is the worthiest promotion.So you have to pay %.2f baht and receive %d ea.\n", i+1, buy[i], get[i], pay, total[i]);
                 }
             }
         }
@@ -263,22 +264,22 @@ void promotion(){
 
 void discount(){
     printf("\nCALVALUE\n\n");
-    printf("Choose the best value for discount based on price or percentage.\n\n");
+    printf("Choose the worthiest discount based on price or percentage.\n\n");
 
     //input section
     float percent, minimum, value, price;
-    printf("Type 1 Enter discount percentage: ");
+    printf("Type 1: Enter discount percentage: ");
     percent_input:
     scanf("%f", &percent);
 
     //percent fix
     if(percent > 100){
-        printf("Please enter the correct percent or less than equal 100.\n");
+        printf("Please enter the correct percent that less than or equal 100.\n");
         goto percent_input;
     }
-    printf("Enter the maximum purchase of discount percentage, If there are no discount restrictions please enter 0: ");
+    printf("Enter the defined  price for discount percentage usage , If there are no conditions for using the discount please enter 0: ");
     scanf("%f", &minimum);
-    printf("Type 2 Enter the amount of the discount value: ");
+    printf("Type 2 Enter the amount of normal discount: ");
     scanf("%f", &value);
     printf("\nEnter Product price: \n");
     scanf("%f", &price);
@@ -299,11 +300,11 @@ void discount(){
 
     //output
     if(type_1 == type_2){ //case equal.
-        printf("\nBoth types of discounts are worth the same.\n");
+        printf("\nBoth types of discount are worth the same.\n");
     }else if(type_1 < type_2){ //case type 1 are best discounted.
-        printf("\nType 1 (discount percentage) are best value and reduce the product to %.2f baht.\n", type_1);
+        printf("\nType 1 (discount percentage) is the worthiness discount that reduce the price of product to: %.2f baht.\n", type_1);
     }else{ //case type 2 are best discounted.
-        printf("\nType 2 (discount value) are best value and reduce the product to %.2f baht.\n", type_2);
+        printf("\nType 2 (discount value) is the worthiness discount that reduce the price of product to: %.2f baht.\n", type_2);
     }
 
     //home
@@ -315,11 +316,14 @@ int main()
 {
     int menu;
     printf("\nCALVALUE\n\n");
+    printf("This is the application that could help you calculate the price of product\n");
+    printf("and help you choose the worthiest product, promotion and discount to make your decision go easier.\n\n");
+    printf("Please select the way we could help you out.\n\n");
     printf("1. Compare the value of the product.\n");
     printf("2. Compare promotion.\n");
     printf("3. Compare discount.\n");
     printf("0. Exit\n");
-    printf("Enter number to continue\n");
+    printf("Enter the number to continue\n");
     choose_menu:
     scanf("%d", &menu);
     if(menu == 0){ // exit
