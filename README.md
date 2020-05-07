@@ -13,7 +13,9 @@
 2. ปิดแอนตี้ไวรัส
 3. ทำการแตกไฟล์
 4. เข้าไปที่ bin > Release > ดับเบิ้ลคลิกที่ calvalue.exe เพื่อเปิดแอปพลิเคชัน
+
 > รูปแบบ GUI ของแอปพลิเคชันเป็นรูปแบบ console application
+
 ![](https://github.com/docxed/calvalue/blob/master/img/open.PNG?raw=true)
 
 ## Features and Functions
@@ -66,7 +68,7 @@
 ## Our Team
 | <img src="https://raw.githubusercontent.com/docxed/calvalue/master/img/215.jpg" width="100" height="100"> | <img src="https://raw.githubusercontent.com/docxed/calvalue/master/img/204.jpg" width="100" height="100">  | <img src="https://raw.githubusercontent.com/docxed/calvalue/master/img/168.jpg" width="100" height="100"> |
 | :------------: | :------------: | :------------: |
-| @docxed | @notepad11196 | @Vichayuth |
+| [@docxed](https://github.com/docxed "@docxed") | [@notepad11196](https://github.com/notepad11196 "@notepad11196") | [@Vichayuth](https://github.com/Vichayuth "@Vichayuth") |
 | Akira Seesanyong | Soodket Sancharoen | Vichayuth Tavichaiyuth |
 | 62070215 | 62070204 | 62070168 |
 
