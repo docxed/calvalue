@@ -77,7 +77,7 @@
 ## Instructor
 | <img src="https://raw.githubusercontent.com/docxed/calvalue/master/img/ksc.jpg" width="100" height="100"> | <img src="https://raw.githubusercontent.com/docxed/calvalue/master/img/pw.jpg" width="100" height="100"> |
 | :------------: | :------------: |
-| Assoc.Prof. Dr. Kitsuchart Pasupa	 | Assoc.Prof. Dr. Panwit Tuwanut |
+| Assoc.Prof.Dr.Kitsuchart Pasupa	 | Assoc.Prof.Dr.Panwit Tuwanut |
 
 
 
