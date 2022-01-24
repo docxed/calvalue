@@ -9,10 +9,12 @@
 - C Language
 
 ## Installation
-1. ดาวน์โหลด zip file จาก [Github](https://codeload.github.com/docxed/calvalue/zip/master "Github")
+<!-- 1. ดาวน์โหลด zip file จาก [Github](https://codeload.github.com/docxed/calvalue/zip/master "Github")
 2. ปิดแอนตี้ไวรัส
 3. ทำการแตกไฟล์
-4. เข้าไปที่ bin > Release > ดับเบิ้ลคลิกที่ calvalue.exe เพื่อเปิดแอปพลิเคชัน
+4. เข้าไปที่ bin > Release > ดับเบิ้ลคลิกที่ calvalue.exe เพื่อเปิดแอปพลิเคชัน -->
+1. ปิดแอนตี้ไวรัส
+2. ดับเบิ้ลคลิกที่ calvalue.exe เพื่อเปิดแอปพลิเคชัน
 
 > รูปแบบ GUI ของแอปพลิเคชันเป็นรูปแบบ console application
 
